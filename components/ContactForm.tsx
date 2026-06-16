@@ -15,6 +15,7 @@ interface FormState {
   nombre: string;
   negocio: string;
   giro: string;
+  giroPersonalizado: string;
   whatsapp: string;
   mensaje: string;
 }
@@ -23,6 +24,7 @@ const INITIAL: FormState = {
   nombre: "",
   negocio: "",
   giro: "",
+  giroPersonalizado: "",
   whatsapp: "",
   mensaje: "",
 };
@@ -165,6 +167,24 @@ export default function ContactForm() {
                     </option>
                   ))}
                 </select>
+
+                {form.giro === "otro" && (
+                  <div className="flex flex-col gap-1.5 mt-3">
+                    <label className="text-sm font-medium text-gray-300">
+                      ¿Cuál es tu giro? <span className="text-gold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="giroPersonalizado"
+                      value={form.giroPersonalizado}
+                      onChange={handleChange}
+                      required
+                      placeholder="Ej. Estética, Gym, Papelería..."
+                      autoFocus
+                      className="bg-[#0D0D0D] border border-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* WhatsApp */}
