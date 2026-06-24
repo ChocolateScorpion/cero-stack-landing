@@ -1,13 +1,22 @@
 @import "tailwindcss";
 
 @theme {
+  /* Gold — restringido: solo CTA principal y detalles de marca */
   --color-gold: #C9A84C;
-  --color-gold-light: #D9B85C;
-  --color-gold-muted: rgba(201, 168, 76, 0.15);
-  --color-dark: #090909;
-  --color-dark-card: #111111;
-  --color-dark-section: #0D0D0D;
-  --color-dark-border: #222222;
+  --color-gold-muted: rgba(201, 168, 76, 0.08);
+  --color-gold-border: rgba(201, 168, 76, 0.18);
+
+  /* Indigo eléctrico — badges, highlights tech, acentos secundarios */
+  --color-indigo: #5C6FFF;
+  --color-indigo-muted: rgba(92, 111, 255, 0.08);
+  --color-indigo-border: rgba(92, 111, 255, 0.20);
+
+  /* Paleta oscura — capas con más profundidad */
+  --color-dark: #080808;
+  --color-dark-card: #0F0F0F;
+  --color-dark-section: #0C0C0C;
+  --color-dark-border: #1A1A1A;
+  --color-dark-border-subtle: #141414;
 }
 
 html {
@@ -16,26 +25,60 @@ html {
 }
 
 body {
-  background-color: #090909;
+  background-color: #080808;
   color: #F0F0F0;
   font-family: var(--font-geist-sans), 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-grid-bg {
   background-image:
-    linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(rgba(92, 111, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 111, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 
 .gold-glow {
   box-shadow: 0 0 40px rgba(201, 168, 76, 0.15), 0 0 80px rgba(201, 168, 76, 0.05);
 }
 
+.indigo-glow {
+  box-shadow: 0 0 40px rgba(92, 111, 255, 0.12), 0 0 80px rgba(92, 111, 255, 0.04);
+}
+
 .card-hover {
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  border-color: #C9A84C;
+  transform: translateY(-5px);
+  border-color: rgba(92, 111, 255, 0.30);
+  box-shadow: 0 12px 40px rgba(92, 111, 255, 0.08);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-delay-1 { transition-delay: 0.10s; }
+.fade-delay-2 { transition-delay: 0.20s; }
+.fade-delay-3 { transition-delay: 0.30s; }
+.fade-delay-4 { transition-delay: 0.40s; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(92,111,255,0.5) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
 }
