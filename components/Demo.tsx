@@ -14,7 +14,7 @@ const DEMOS = [
     id: "lucida",
     label: "Lúcida App",
     description: "Sistema de comisiones, cobros y reportes para estudio de tatuajes.",
-    url: "https://tattoo-studio.vercel.app/r/demo01",
+    url: "https://tattoo-studio-steel.vercel.app/r/demo01",
     tag: "Tatuajes / Barbería",
   },
 ];
